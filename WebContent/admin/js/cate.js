@@ -1,0 +1,134 @@
+$(function(){
+	$('#btnsave').on('click',function(){
+		var isValid = $('#f1').form('validate');
+		if(isValid)
+		{
+				$.ajax({
+					type:'post',
+					url:'/web-project/catecontroller.do?type=add',
+					data:$('#f1').serialize(),
+					success:function(data){
+						if(data=="1")
+						{
+							$.messager.alert('添加成功','添加成功','info');
+							$('form').form('clear');
+							$('#add').dialog('close');
+							$('#tab').datagrid('reload');
+						}
+						if(data=="0")
+						{
+							$.messager.alert('添加失败','添加失败','info');
+							$('form').form('clear');
+							$('#add').dialog('close');
+						}
+					}
+				})
+		}
+		else
+		{
+			$.messager.alert('添加失败','表单验证失败','info');
+		}
+	})
+	$('#btncancel').on('click',function(){
+		$('#add').dialog('close');
+	})
+	$('#btnedit').on('click',function(){
+		$.ajax({
+			type:'post',
+			url:'/web-project/catecontroller.do?type=edit',
+			data:$('#f2').serialize(),
+			success:function(data){
+				if(data=="1")
+				{
+					$.messager.alert('修改成功','修改成功','info');
+					$('#f2').form('clear');
+					$('#edit').dialog('close');
+					$('#tab').datagrid('reload');
+				}
+				if(data=="0")
+				{
+					$.messager.alert('添加失败','添加失败','info');
+					$('form').form('clear');
+					$('#edit').dialog('close');
+				}
+			}
+})
+})
+	$('#tab').datagrid({  
+		url:'/web-project/catecontroller.do',    
+		title:'商品类别',
+		queryParams:{type:'search'},
+	    singleSelect:true,
+	    collapsible:true,
+	    rownumbers:true,
+	    toolbar:[{
+			text:'修改',
+			iconCls:'icon-edit',
+			handler:function(){
+				var select = $('#tab').datagrid('getSelected');
+				if(select==null)
+				{
+					$.messager.alert('修改操作','请选择要修改的行','info');
+				}
+				if(select!=null)
+				{
+					$('#edit').dialog('open');
+					$('#editcid').textbox('setValue',select.cid);
+					$('#editcid').textbox('readonly',true);
+					$('#editcname').textbox('setValue',select.cname);
+					
+				}
+			}
+		},'-',
+		{
+			text:'添加',
+			iconCls:'icon-add',
+			handler:function(){
+				$('#add').dialog('open');
+				
+			}
+		},'-',
+		{
+			text:'删除 ',
+			iconCls:'icon-remove',
+			handler:function(){
+				var select = $('#tab').datagrid('getSelected');
+				if(select==null)
+				{
+					$.messager.alert('删除操作','请选择要删除的行','info');
+				}
+				if(select!=null)
+				{
+					$.messager.confirm('删除确认', '确认删除所选项吗', function(r){
+						if(r){
+							$.ajax({
+								type:'post',
+								url:'/web-project/catecontroller.do',
+								data:{type:'del',cid:select.cid},
+								success:function(data)
+								{
+									if(data=="1")
+									{
+										$.messager.alert('删除成功','删除成功','info');
+										$('#tab').datagrid('reload');
+									}
+									if(data=="0")
+									{
+										$.messager.alert('删除失败','删除失败','info');
+									}
+								}
+							})
+						}				
+					});
+						
+				}
+			}
+		}
+		],
+	    columns:[[    
+	        {field:'chk', checkbox:'全选'},
+	        {field:'cid',title:'编号'},    
+	        {field:'cname',title:'类别名称'},       
+	    ]]    
+	});
+})

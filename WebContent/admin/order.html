@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="easyui/themes/bootstrap/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+	<script src="easyui/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="easyui/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="easyui/locale/easyui-lang-zh_CN.js" type="text/javascript" charset="utf-8"></script>	
+	<script src="js/order.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	
+	订单列表
+	<hr />
+	<table id="tab"></table>
+	
+	<div id="add" class="easyui-dialog" title="添加订单" style="width:400px;height:500px;" data-options="iconCls:'icon-add',resizable:true,modal:true,buttons:'#footer',closed:true">
+			<form action="" id="f1" method="post">
+			<table id="tb">
+				<tr>
+					<td>用户编号</td>	
+					<td><input id="adduserid" name="adduserid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>商品编号</td>	
+					<td><input id="addgid" name="addgid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>总价</td>	
+					<td><input id="addtotalprice" name="addtotalprice" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>订单日期</td>	
+					<td><input id="addorderdate" name="addorderdate" class="easyui-datebox" style="width:200px" required ="required"> </td>			
+				</tr>
+				<tr>
+					<td>状态</td>	
+					<td><input id="addstate" name="addstate" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+			</table>
+			</form>
+		</div>
+		<div id="footer">
+			<a id="btnsave" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
+			<a id="btncancel" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消 </a>  
+		</div>
+		
+		
+		<div id="edit" class="easyui-dialog" title="修改订单" style="width:400px;height:500px;" data-options="iconCls:'icon-edit',resizable:true,modal:true,buttons:'#footer1',closed:true">
+			<form action="" id="f2" method="post">
+			<table id="tb1">
+				<tr>
+					<td>订单编号</td>	
+					<td><input id="editorderid" name="editorderid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>用户编号</td>	
+					<td><input id="edituserid" name="edituserid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>商品编号</td>	
+					<td><input id="editgid" name="editgid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>总价</td>	
+					<td><input id="edittotalprice" name="edittotalprice" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>订单日期</td>	
+					<td><input id="editorderdate" name="editorderdate" class="easyui-datebox" style="width:200px" required ="required"> </td>			
+				</tr>
+				<tr>
+					<td>状态</td>	
+					<td><input id="editstate" name="editstate" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+			</table>
+			</form>
+		</div>
+		<div id="footer1">
+			<a id="btnedit" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存修改</a>
+			
+		</div>
+</body>
+</html>

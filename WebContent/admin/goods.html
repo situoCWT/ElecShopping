@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="easyui/themes/bootstrap/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+	<script src="easyui/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="easyui/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="easyui/locale/easyui-lang-zh_CN.js" type="text/javascript" charset="utf-8"></script>	
+	<script src="js/goods.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<input id="select"/>
+	<input type="text" id="searchbox"/>
+	<p/>
+	<table id="tab"></table>
+	<div id="add" class="easyui-dialog" title="添加商品" style="width:400px;height:500px;" data-options="iconCls:'icon-add',resizable:true,modal:true,buttons:'#footer',closed:true">
+		<form action="" id="f1" method="post">
+		<table id="tb">
+				<tr>
+					<td>商品编号</td>	
+					<td><input id="addgid" name="addgid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>商品名称</td>	
+					<td><input id="addgtitle" name="addgtitle" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>作者</td>	
+					<td><input id="addgauthor" name="addgauthor" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>现价</td>	
+					<td><input id="addgsaleprice" name="addgsaleprice" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>原价</td>	
+					<td><input id="addginprice" name="addginprice" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>描述</td>	
+					<td><input id="addgdesc" name="addgdesc" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>图片</td>	
+					<td><input id="addgimg" name="addgimg" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>点击量</td>	
+					<td><input id="addgclick" name="addgclick" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>类别编号</td>	
+					<td><input id="addcid" name="addcid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>出版商编号</td>	
+					<td><input id="addpid" name="addpid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+			</table>
+			</form>
+	</div>
+	<div id="footer">
+			<a id="btnsave" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
+			<a id="btncancel" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消 </a>  
+		</div>
+	
+	
+	<div id="edit" class="easyui-dialog" title="修改商品" style="width:400px;height:500px;" data-options="iconCls:'icon-edit',resizable:true,modal:true,buttons:'#footer',closed:true">
+		<form action="" id="f2" method="post">
+		<table id="tb2">
+				<tr>
+					<td>商品编号</td>	
+					<td><input id="editgid" name="editgid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>商品名称</td>	
+					<td><input id="editgtitle" name="editgtitle" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>作者</td>	
+					<td><input id="editgauthor" name="editgauthor" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>现价</td>	
+					<td><input id="editgsaleprice" name="editgsaleprice" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>原价</td>	
+					<td><input id="editginprice" name="editginprice" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>描述</td>	
+					<td><input id="editgdesc" name="editgdesc" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>图片</td>	
+					<td><input id="editgimg" name="editgimg" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>点击量</td>	
+					<td><input id="editgclick" name="editgclick" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>类别编号</td>	
+					<td><input id="editcid" name="editcid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+				<tr>
+					<td>出版商编号</td>	
+					<td><input id="editpid" name="editpid" class="easyui-textbox easyui-validatebox" style="width:200px" data-options="required:true"> </td>			
+				</tr>
+			</table>
+			</form>
+	</div>
+	<div id="footer">
+			<a id="btnedit" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存修改</a>
+		</div>
+	
+</body>
+</html>

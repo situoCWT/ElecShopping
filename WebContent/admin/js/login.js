@@ -1,0 +1,43 @@
+$(function(){
+	$('#login').dialog({
+		width:400,
+		heigth:200,
+		title:'用户登录',
+		collapsible:true,
+		iconCls:'icon-man',
+		buttons:[{
+			text:'登陆',
+			iconCls:'icon-ok',
+			handler:function(){
+			var isValid = $('form').form('validate');
+			if(isValid)
+			{
+				$.ajax({
+					type:'post',
+					url:'/web-project/userlogin.do',
+					data:$('form').serialize(),
+					success:function(data){
+						if(data=="1")
+						{
+							window.location='index.html';
+						}
+						if(data=="0")
+						{
+							$.messager.alert('登陆失败','请检查账号密码','info');
+						}
+					}
+				});
+			}
+			else{
+				$.messager.alert('登陆失败','表单验证失败','info');
+			}
+			}
+		},{
+			text:'取消',
+			iconCls:'icon-cancel',
+			handler:function(){
+				$.messager.alert('取消','确定取消吗','info');
+			}
+		}]
+	});
+})

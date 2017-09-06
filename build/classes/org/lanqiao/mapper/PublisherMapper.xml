@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.PublisherMapper">
+	<select id="getPublisher" resultType="Publisher" parameterType="String">
+		select * from t_publisher where pid =#{pid}
+	</select>
+	
+	<select id="getAllPublisher" resultType="publisher">
+		select * from t_publisher
+	</select>
+	
+	<select id="deletePublisher" parameterType="String">
+		delete from t_publisher where pid =#{pid}
+	</select>
+	<select id="insertPublisher" parameterType="Publisher">
+		insert into t_publisher values(#{pid},#{pname})
+	</select>
+	<select id="updatePublisher" parameterType="Publisher">
+		update t_publisher  set pname=#{pname} where pid =#{pid}
+	</select>
+</mapper>
